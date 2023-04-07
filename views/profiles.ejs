@@ -223,26 +223,90 @@ body {
   <title>Add new Profile</title>
 </head>
 <body>
-  <div class="container right-panel-active" style="height: 500px;">
-    <!-- Sign Up -->
-    <div class="container__form container--signup">
-      <form action="/profiles" class="form" id="form1" method="post">
-          <h2 class="form__title">Add New Profile</h2>
-          <input type="number" placeholder="Author Id" class="input" name="author_id"/>
-          <input type="text" placeholder="Website" class="input" name="website"/>
-          <input type="text" placeholder="Facebook" class="input" name="facebook"/>
-          <input type="text" placeholder="Twitter" class="input" name="twitter"/>
-        <button class="btn">ADD</button>
-      </form>
-    </div>
 
-    <!-- Overlay -->
-    <div class="container__overlay">
-      <div class="overlay">
-        <div class="overlay__panel overlay--left">
-        </div>      
-      </div>
-    </div>
-  </div>
+    <div class="container right-panel-active" style="height:500px;">
+		<!-- Add New Profile -->
+		<div class="container__form container--signup">
+			<form action="/profiles" class="form" id="form1" method="post">
+                <h2 class="form__title">Add New Profile</h2>
+                <input type="number" placeholder="Author Id" class="input" name="author_id"/>
+                <input type="text" placeholder="Website" class="input" name="website"/>
+                <input type="text" placeholder="Facebook" class="input" name="facebook"/>
+                <input type="text" placeholder="Twitter" class="input" name="twitter"/>
+              <button class="btn">ADD</button>
+            </form>
+		</div>
+
+		<!-- Show all -->
+		<div class="container__form container--signin">
+			<form action="/profiles" class="form" id="form2" method="post">
+				<table>
+					<thead>
+						<tr>
+							<td>Profile ID</td>
+							<td>Author ID</td>
+							<td>Website</td>
+							<td>Facebook</td>
+							<td>Twitter</td>
+						</tr>
+					</thead>
+					<tbody>
+						<% profiles.forEach(profile=> { %>
+							<tr>
+								<td>
+									<%= profile.id %>
+								</td>
+								<td>
+									<%= profile.author_id %>
+								</td>
+								<td>
+									<%= profile.website %>
+								</td>
+								<td>
+									<%= profile.facebook %>
+								</td>
+								<td>
+									<%= profile.twitter %>
+								</td>
+							</tr>
+							<% }) %>
+					</tbody>
+				</table>
+			</form>
+		</div>
+
+		<!-- Overlay -->
+		<div class="container__overlay">
+			<div class="overlay">
+				<div class="overlay__panel overlay--left">
+					<button class="btn" id="signIn">Show All</button>
+				</div>
+				<div class="overlay__panel overlay--right">
+					<button class="btn" id="signUp">Add New</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const signInBtn = document.getElementById("signIn");
+		const signUpBtn = document.getElementById("signUp");
+		const fistForm = document.getElementById("form1");
+		const secondForm = document.getElementById("form2");
+		const container = document.querySelector(".container");
+
+		signInBtn.addEventListener("click", () => {
+			container.classList.remove("right-panel-active");
+		});
+
+		signUpBtn.addEventListener("click", () => {
+			container.classList.add("right-panel-active");
+		});
+
+		// fistForm.addEventListener("submit", (e) => e.preventDefault());
+		// secondForm.addEventListener("submit", (e) => e.preventDefault());
+
+	</script>
+
 </body>
 </html>

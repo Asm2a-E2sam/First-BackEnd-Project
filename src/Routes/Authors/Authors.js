@@ -2,13 +2,8 @@ const Router = require("express").Router();
 const db = require("../../../mysql-connector");
 const { query_runner, create_error_object, done } = require("../../helpers/db-functions");
 
-Router.get("/", (req, res) => {
-        res.status(200).render("users");
-});
 // Router.get("/", (req, res) => {
-//         query_runner("SELECT * FROM author")
-//                 .then(rows => res.status(200).json(rows))
-//                 .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
+//         res.status(200).render("users");
 // });
 
 Router.post("/", (req, res) => {
@@ -22,7 +17,13 @@ Router.post("/", (req, res) => {
         query_runner("INSERT INTO author \
         (age, email, username, password, role) \
         VALUES (?, ?, ?, ?, ?)", data)
-                .then(row => res.status(200).render("sucess"))
+        .then(row => res.status(200).render("sucess"))
+        .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
+});
+
+Router.get("/", (req, res) => {
+        query_runner("SELECT * FROM author")
+                .then(rows => res.status(200).render("users", {users: rows, page_title: "Users"}))
                 .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
 });
 

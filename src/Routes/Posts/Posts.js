@@ -2,14 +2,14 @@ const Router = require("express").Router();
 const db = require("../../../mysql-connector");
 const { query_runner, create_error_object, done } = require("../../helpers/db-functions");
 
-Router.get("/", (req, res) => {
-        res.status(200).render("posts");
-});
 // Router.get("/", (req, res) => {
-//         query_runner("SELECT * FROM posts")
-//                 .then(rows => res.status(200).json(rows))
-//                 .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
+//         res.status(200).render("posts");
 // });
+Router.get("/", (req, res) => {
+        query_runner("SELECT * FROM posts")
+                .then(rows => res.status(200).render("posts", {posts: rows, page_title: "Posts"}))
+                .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
+});
 
 Router.post("/", (req, res) => {
         const data = [
