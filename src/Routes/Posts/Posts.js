@@ -3,10 +3,13 @@ const db = require("../../../mysql-connector");
 const { query_runner, create_error_object, done } = require("../../helpers/db-functions");
 
 Router.get("/", (req, res) => {
-        query_runner("SELECT * FROM posts")
-                .then(rows => res.status(200).json(rows))
-                .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
+        res.status(200).render("posts");
 });
+// Router.get("/", (req, res) => {
+//         query_runner("SELECT * FROM posts")
+//                 .then(rows => res.status(200).json(rows))
+//                 .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
+// });
 
 Router.post("/", (req, res) => {
         const data = [
@@ -17,7 +20,7 @@ Router.post("/", (req, res) => {
         query_runner("INSERT INTO posts \
         (title, content, author_id) \
         VALUES (?, ?, ?)", data)
-                .then(row => res.status(200).json(row))
+                .then(row => res.status(200).render("sucess"))
                 .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
 });
 

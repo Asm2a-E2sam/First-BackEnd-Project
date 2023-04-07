@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" href="./styles/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
     :root {
 	/* COLORS */
 	--white: #e9e9e9;
@@ -218,37 +210,3 @@ body {
 		z-index: 5;
 	}
 }
-
-  </style>
-  <title>Add new Auther</title>
-</head>
-<body>
-  <div class="container right-panel-active" style="height: 500px;">
-    <!-- Sign Up -->
-    <div class="container__form container--signup">
-      <form action="/users" class="form" id="form1" method="post">
-        <h2 class="form__title">Add New Author</h2>
-        <input type="text" placeholder="Username" class="input" name="username"/>
-        <input type="text" placeholder="Email" class="input" name="email"/>
-        <input type="number" placeholder="Age" class="input" name="age"/>
-        <input type="password" placeholder="Password" class="input" name="password"/>
-        <select class="input" name="role" style="width: 311.8px;">
-          <option >Role</option>
-          <option value="admin">Admin</option>
-          <option value="editor">Editor</option>
-          <option value="user">User</option>
-        </select>
-        <button class="btn">ADD</button>
-      </form>
-    </div>
-
-    <!-- Overlay -->
-    <div class="container__overlay">
-      <div class="overlay">
-        <div class="overlay__panel overlay--left">
-        </div>      
-      </div>
-    </div>
-  </div>
-</body>
-</html>

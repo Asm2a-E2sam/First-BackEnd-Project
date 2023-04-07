@@ -10,6 +10,7 @@ const posts = require("./src/Routes/Posts/Posts");
 const profiles = require("./src/Routes/Profiles/Profiles");
 
 app.set("view engine", "ejs");
+app.use(express.static("public"));
 app.set("views", path.join(process.cwd(), "views"))
 
 app.use(bodyParser.urlencoded({extended: true}))

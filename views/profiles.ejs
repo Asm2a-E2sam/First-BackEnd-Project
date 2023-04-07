@@ -220,24 +220,18 @@ body {
 }
 
   </style>
-  <title>Add new Auther</title>
+  <title>Add new Profile</title>
 </head>
 <body>
   <div class="container right-panel-active" style="height: 500px;">
     <!-- Sign Up -->
     <div class="container__form container--signup">
-      <form action="/users" class="form" id="form1" method="post">
-        <h2 class="form__title">Add New Author</h2>
-        <input type="text" placeholder="Username" class="input" name="username"/>
-        <input type="text" placeholder="Email" class="input" name="email"/>
-        <input type="number" placeholder="Age" class="input" name="age"/>
-        <input type="password" placeholder="Password" class="input" name="password"/>
-        <select class="input" name="role" style="width: 311.8px;">
-          <option >Role</option>
-          <option value="admin">Admin</option>
-          <option value="editor">Editor</option>
-          <option value="user">User</option>
-        </select>
+      <form action="/profiles" class="form" id="form1" method="post">
+          <h2 class="form__title">Add New Profile</h2>
+          <input type="number" placeholder="Author Id" class="input" name="author_id"/>
+          <input type="text" placeholder="Website" class="input" name="website"/>
+          <input type="text" placeholder="Facebook" class="input" name="facebook"/>
+          <input type="text" placeholder="Twitter" class="input" name="twitter"/>
         <button class="btn">ADD</button>
       </form>
     </div>

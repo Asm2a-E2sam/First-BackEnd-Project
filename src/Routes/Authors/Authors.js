@@ -22,7 +22,7 @@ Router.post("/", (req, res) => {
         query_runner("INSERT INTO author \
         (age, email, username, password, role) \
         VALUES (?, ?, ?, ?, ?)", data)
-                .then(row => res.status(200).json(row))
+                .then(row => res.status(200).render("sucess"))
                 .catch(err => res.status(500).json(create_error_object("db_error", err.message)))
 });
 
